@@ -24,4 +24,5 @@ void (*sect_func(char *opcode))(stack_t **stack, unsigned int line_number)
 		if (protos[i].opcode == opcode)
 			return (protos[i].f);
 	}
+	return (NULL);
 }

@@ -27,10 +27,9 @@ int main(int ac, char **av)
 	while ((line_len = getline(&lineptr, &size, bytefile)) != -1)
 	{
 		line_count++;
-		if (line_len == 1)
-			continue;
+		if (line_len > 1)
+			parse_line(lineptr, line_count);
 		/*printf("%ld\n", line_len);*/
-		parse_line(lineptr, line_count);
 	}
 	fclose(bytefile);
 	return (0);

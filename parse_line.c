@@ -11,6 +11,9 @@ void parse_line(char *file_line, int line_num)
 	size_t n = 0, len = 1;
 	char *line_token;
 	char **line_tokens_arr;
+	int is_valid;
+	void (*fnc_def)(stack_t **stack, unsigned int line_number);
+	stack_t *head = NULL;
 
 	line_tokens_arr = malloc(sizeof(char *));
 	if (line_tokens_arr == NULL)
@@ -30,4 +33,14 @@ void parse_line(char *file_line, int line_num)
 		n++;
 	}
 	line_tokens_arr[n] = NULL;
+	fnc_def = sect_func(line_tokens_arr[0]);
+	if (fnc_def)
+	{
+		is_valid = if_valid(line_tokens_arr);
+		if (is_valid)
+			fnc_def(head, line_num);
+		p_err(line_num);
+	}
+	else
+		p_err(line_num);
 }

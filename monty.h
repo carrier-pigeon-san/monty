@@ -44,5 +44,7 @@ void nop(stack_t **stack, unsigned int line_number);
 void parse_line(char *file_line, int line_num);
 void (*sect_func(char *opcode))(stack_t **stack, unsigned int line_number);
 void *extend(void *mem, size_t new_size);
+int if_valid(char *str_tokens[]);
+void p_err(char *line_num);
 
 #endif /* #ifndef MONTY_H */
