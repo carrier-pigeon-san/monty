@@ -22,7 +22,7 @@ void parse_tokens(char **opcode_tokens, int line_number)
 			if (is_valid == 0)
 			{
 				/*printf("route 1\n");*/
-				dprintf(2, "L%d: usage: push integer");
+				dprintf(2, "L%d: usage: push integer", line_number);
 			}
 			fnc_def(&head, atoi(opcode_tokens[1]));
 		}
