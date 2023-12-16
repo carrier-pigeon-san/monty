@@ -13,5 +13,5 @@ int if_valid(char *str_tokens[])
 		;
 	if (n < 2)
 		return (0);
-
+	return (1);
 }

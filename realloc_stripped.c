@@ -17,6 +17,7 @@ void *extend(void *mem, size_t new_size)
 	{
 		dprintf(2, "Error: malloc failed");
 		exit(EXIT_FAILURE);
+	}
 	if (mem)
 	{
 		byte_mem = (unsigned char *)mem;
