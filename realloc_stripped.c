@@ -6,9 +6,9 @@
  *
  * Return: void pointer
  */
-void *extend(void *mem, size_t new_size)
+void *extend(void *mem, size_t new_size, size_t old_size)
 {
-	size_t n, old_size = sizeof(mem);
+	size_t n;
 	void *mem2;
 	unsigned char *byte_mem, *byte_mem2;
 
@@ -24,7 +24,7 @@ void *extend(void *mem, size_t new_size)
 		byte_mem2 = (unsigned char *)mem2;
 
 		for (n = 0; n < old_size; n++)
-			byte_mem[n] = byte_mem2[n];
+			byte_mem2[n] = byte_mem[n];
 		free(mem);
 	}
 	return (mem2);

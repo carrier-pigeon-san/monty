@@ -1,5 +1,4 @@
 #include "monty.h"
-#include <stdio.h>
 /**
  * main - entry point
  * @ac: argument count
@@ -13,6 +12,7 @@ int main(int ac, char **av)
 	char *lineptr = NULL;
 	size_t size = 0, line_count = 0;
 	ssize_t line_len;
+	char **tokens_array;
 
 	if (ac != 2)
 	{
@@ -29,7 +29,11 @@ int main(int ac, char **av)
 	{
 		line_count++;
 		if (line_len > 1)
-			parse_line(lineptr, line_count);
+		{
+			tokens_array = get_toks(lineptr, " $\n");
+			if (*tokens_array)
+				parse_tokens(tokens_array, line_count);
+		}
 		/*printf("%ld\n", line_len);*/
 	}
 	fclose(bytefile);

@@ -7,11 +7,16 @@
  */
 int if_valid(char *str_tokens[])
 {
-	int n;
+	int n, arg, is_zero;
 
 	for (n = 0; str_tokens[n] != NULL; n++)
 		;
 	if (n < 2)
 		return (0);
+	arg = atoi(str_tokens[1]);
+	is_zero = strcmp(str_tokens[1], "0");
+	if (arg == 0 && is_zero != 0)
+		return (0);
+
 	return (1);
 }

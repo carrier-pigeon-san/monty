@@ -20,7 +20,7 @@ typedef struct stack_s
 {
 	int n;
 	struct stack_s *prev;
-	struct stack_S *next;
+	struct stack_s *next;
 } stack_t;
 /**
  * struct instruction_s - opcode and its function
@@ -36,7 +36,6 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-extern char **line_tokens_arr;
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
 void pint(stack_t **stack, unsigned int line_number);
@@ -44,10 +43,12 @@ void pop(stack_t **stack, unsigned int line_number);
 void swap(stack_t **stack, unsigned int line_number);
 void add(stack_t **stack, unsigned int line_number);
 void nop(stack_t **stack, unsigned int line_number);
-void parse_line(char *file_line, int line_num);
+char **get_toks(char *file_line, char *delimiters);
 void (*sect_func(char *opcode))(stack_t **stack, unsigned int line_number);
-void *extend(void *mem, size_t new_size);
+void *extend(void *mem, size_t new_size, size_t old_size);
 int if_valid(char *str_tokens[]);
-void p_err(int line_num);
+void p_err(int line_num, char *code);
+void rm_newline(char *str);
+void parse_tokens(char **opcode_tokens, int line_number);
 
 #endif /* #ifndef MONTY_H */
