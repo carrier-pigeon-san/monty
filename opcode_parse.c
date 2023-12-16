@@ -21,8 +21,8 @@ void parse_tokens(char **opcode_tokens, int line_number)
 			is_valid = if_valid(opcode_tokens);
 			if (is_valid == 0)
 			{
-				printf("route 1\n");
-				p_err(line_number, opcode_tokens[0]);
+				/*printf("route 1\n");*/
+				dprintf(2, "L%d: usage: push integer");
 			}
 			fnc_def(&head, atoi(opcode_tokens[1]));
 		}
@@ -32,7 +32,7 @@ void parse_tokens(char **opcode_tokens, int line_number)
 	}
 	else
 	{
-		printf("route 2\n");
+		/*printf("route 2\n");*/
 		p_err(line_number, opcode_tokens[0]);
 	}
 }
