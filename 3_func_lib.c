@@ -40,3 +40,13 @@ void add(stack_t **stack, unsigned int line_number)
 	(*stack)->n = (*stack)->n + (*stack)->prev->n;
 	(*stack)->prev = NULL;
 }
+/**
+ * nop - does nothing
+ * @stack: pointer to top of stack
+ * @line_number: line number of code in file
+ */
+void nop(stack_t **stack, unsigned int line_number)
+{
+	(void)stack;
+	(void)line_number;
+}
