@@ -24,3 +24,19 @@ void swap(stack_t **stack, unsigned int line_number)
 	(*stack)->next = temp_node;
 	(*stack)->prev = NULL;
 }
+/**
+ * add - adds the top two elements of the stack
+ * @stack: pointer to the top of the stack
+ * @line_number: line number of code in file
+ */
+void add(stack_t **stack, unsigned int line_number)
+{
+	if (*stack == NULL || (*stack)->next == NULL)
+	{
+		dprintf(2, "L%d: can't add, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	*stack = (*stack)->next;
+	(*stack)->n = (*stack)->n + (*stack)->prev->n;
+	(*stack)->prev = NULL;
+}
