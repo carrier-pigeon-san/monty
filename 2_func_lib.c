@@ -1,11 +1,10 @@
 #include "monty.h"
 /**
  * make_node - create new stack_t node
- * @line_number: node value
  *
  * Return: pointer to new node
  */
-stack_t *make_node(int line_number)
+stack_t *make_node(void)
 {
 	stack_t *new_entry;
 
@@ -15,7 +14,7 @@ stack_t *make_node(int line_number)
 		dprintf(2, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
-	new_entry->n = line_number;
+	new_entry->n = 0;
 	new_entry->next = NULL;
 	new_entry->prev = NULL;
 	return (new_entry);
@@ -53,14 +52,31 @@ void push(stack_t **stack, unsigned int line_number)
  */
 void pall(stack_t **stack, unsigned int line_number)
 {
-	stack_t *temp_entry;
-
-	(void)line_number;
-	temp_entry = *stack;
-
-	while (temp_entry != NULL)
+	if (*stack)
 	{
-		printf("%d\n", temp_entry->n);
-		temp_entry = temp_entry->next;
+		stack_t *temp_entry;
+
+		(void)line_number;
+		temp_entry = *stack;
+
+		while (temp_entry != NULL)
+		{
+			printf("%d\n", temp_entry->n);
+			temp_entry = temp_entry->next;
+		}
 	}
+}
+/**
+ * pint - prints value at the top of the stack followed by a new line
+ * @stack: top of the stack
+ * @line_number: node value
+ */
+void pint(stack_t **stack, unsigned int line_number)
+{
+	if (*stack == NULL)
+	{
+		dprintf(2, "L%d: can't pint, stack empty", line_number);
+		exit(EXIT_FAILURE);
+	}
+	printf("%d\n", (*stack)->n);
 }
