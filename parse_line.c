@@ -1,8 +1,8 @@
 #include "monty.h"
 /**
- * parse_line - processes line of string read from file
+ * get_toks - processes line of string read from file
  * @file_line: string containing line read from file
- * @line_num: number of line in the file
+ * @delimiters: delimiters for tokenizing file_line
  *
  * Return: void
  */
@@ -17,7 +17,7 @@ char **get_toks(char *file_line, char *delimiters)
 	line_tokens_arr = malloc(sizeof(char *));
 	if (line_tokens_arr == NULL)
 	{
-		dprintf(2, "Error: malloc failed");
+		dprintf(2, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
 	/*rm_newline(file_line);*/
@@ -25,7 +25,8 @@ char **get_toks(char *file_line, char *delimiters)
 
 	while (line_token != NULL)
 	{
-		line_tokens_arr = extend(line_tokens_arr, sizeof(char *) * (len + 1), sizeof(char *) * len);
+		line_tokens_arr = extend(line_tokens_arr, sizeof(char *) * (len + 1),
+				sizeof(char *) * len);
 		line_tokens_arr[n] = line_token;
 		line_token = strtok(NULL, delimiters);
 		len++;

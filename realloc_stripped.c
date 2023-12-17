@@ -3,6 +3,7 @@
  * extend - increases the size of a pointer to a given size
  * @mem: pointer to be extended
  * @new_size: new size to be allocated the pointer
+ * @old_size: previous size of memory to be extended
  *
  * Return: void pointer
  */
@@ -15,7 +16,7 @@ void *extend(void *mem, size_t new_size, size_t old_size)
 	mem2 = malloc(new_size);
 	if (mem2 == NULL)
 	{
-		dprintf(2, "Error: malloc failed");
+		dprintf(2, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
 	if (mem)

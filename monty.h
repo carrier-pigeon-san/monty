@@ -48,7 +48,6 @@ void (*sect_func(char *opcode))(stack_t **stack, unsigned int line_number);
 void *extend(void *mem, size_t new_size, size_t old_size);
 int if_valid(char *str_tokens[]);
 void p_err(int line_num, char *code);
-void rm_newline(char *str);
-void parse_tokens(char **opcode_tokens, int line_number);
+void parse_tokens(char **opcode_tokens, int line_numberi, stack_t **head);
 
 #endif /* #ifndef MONTY_H */

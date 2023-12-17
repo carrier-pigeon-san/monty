@@ -13,6 +13,7 @@ int main(int ac, char **av)
 	size_t size = 0, line_count = 0;
 	ssize_t line_len;
 	char **tokens_array;
+	stack_t *head = NULL;
 
 	if (ac != 2)
 	{
@@ -32,7 +33,7 @@ int main(int ac, char **av)
 		{
 			tokens_array = get_toks(lineptr, " $\n");
 			if (*tokens_array)
-				parse_tokens(tokens_array, line_count);
+				parse_tokens(tokens_array, line_count, &head);
 		}
 		/*printf("%ld\n", line_len);*/
 	}
