@@ -59,3 +59,22 @@ void free_stack(stack_t *stack)
 		temp = stack;
 	}
 }
+/**
+ * pchar - prints the char at the top of the stack
+ * @stack: double pointer to top of stack
+ * @line_number: line number of opcode in file
+ */
+void pchar(stack_t **stack, unsigned int line_number)
+{
+	if (*stack == NULL)
+	{
+		dprintf(2, "L%d: can't pchar, stack empty\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	if ((*stack)->n > 127 || (*stack)->n < 0)
+	{
+		dprintf(2, "L%d: can't pchar, value out of range\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	printf("%c\n", (*stack)->n);
+}
