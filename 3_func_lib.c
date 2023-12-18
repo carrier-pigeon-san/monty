@@ -18,9 +18,11 @@ void swap(stack_t **stack, unsigned int line_number)
 	if ((*stack)->next == NULL)
 		temp_node->next = NULL;
 	else
+	{
 		temp_node->next = (*stack)->next;
+		(*stack)->next->prev = temp_node;
+	}
 	temp_node->prev = *stack;
-	(*stack)->next->prev = temp_node;
 	(*stack)->next = temp_node;
 	(*stack)->prev = NULL;
 }
