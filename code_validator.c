@@ -16,7 +16,7 @@ int if_valid(char **str_tokens)
 		return (0);
 
 	for (n = 0, ptr = str_tokens[1] + 1; ptr[n] != '\0'; n++)
-		if(!isdigit((unsigned char)ptr[n]))
+		if (!isdigit((unsigned char)ptr[n]))
 			return (0);
 
 	if (str_tokens[1][0] == '-')
