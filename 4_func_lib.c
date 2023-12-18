@@ -78,3 +78,20 @@ void pchar(stack_t **stack, unsigned int line_number)
 	}
 	printf("%c\n", (*stack)->n);
 }
+/**
+ * pstr - prints string starting at the top of the stack
+ * @stack: double pointer to the top of the stack
+ * @line_number: line number of opcode in file
+ */
+void pstr(stack_t **stack, unsigned int line_number)
+{
+	stack_t *temp = *stack;
+
+	(void)line_number;
+	while(temp->n >= 1 && temp->n <= 127)
+	{
+		printf("%c", (*stack)->n);
+		temp = temp->next;
+	}
+	printf("\n");
+}

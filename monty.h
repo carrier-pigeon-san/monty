@@ -50,6 +50,7 @@ void divide(stack_t **stack, unsigned int line_number);
 void mul(stack_t **stack, unsigned int line_number);
 void mod(stack_t **stack, unsigned int line_number);
 void pchar(stack_t **stack, unsigned int line_number);
+void pstr(stack_t **stack, unsigned int line_number);
 char **get_toks(char *file_line, char *delimiters);
 void (*sect_func(char *opcode))(stack_t **stack, unsigned int line_number);
 void *extend(void *mem, size_t new_size, size_t old_size);
