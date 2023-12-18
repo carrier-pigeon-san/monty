@@ -55,7 +55,7 @@ void nop(stack_t **stack, unsigned int line_number)
  * @stack: double pointer to the top of the stack
  * @line_number: line number of the code in file
  */
-void sub(stack_t **Stack, unsigned int line_number)
+void sub(stack_t **stack, unsigned int line_number)
 {
 	if (*stack == NULL || (*stack)->next == NULL)
 	{
@@ -64,5 +64,26 @@ void sub(stack_t **Stack, unsigned int line_number)
 	}
 	*stack = (*stack)->next;
 	(*stack)->n = (*stack)->n - (*stack)->prev->n;
+	(*stack)->prev = NULL;
+}
+/**
+ * div - divide the second top element of the stack by the top element
+ * @stack: double pointer to the top of the stack
+ * @line_number: line number of code in file
+ */
+void div(stack_t **stack, unsigned int line_number)
+{
+	if (*stack == NULL || (*stack)->next == NULL)
+	{
+		dprintf(2, "L%d: can't div, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	if ((*stack)->n == 0)
+	{
+		dprintf(2, "L%d: division by zero\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	*stack = (*stack)->next;
+	(*stack)->n = (*stack)->n / (*stack)->prev->n;
 	(*stack)->prev = NULL;
 }
