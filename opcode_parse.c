@@ -32,7 +32,10 @@ void parse_tokens(char **opcode_tokens, int line_number, stack_t **head,
 				fclose(stream);
 				exit(EXIT_FAILURE);
 			}
-			fnc_def(head, atoi(opcode_tokens[1]));
+			else if (is_valid == -1)
+				fnc_def(head, -1 * atoi(opcode_tokens[1] + 1));
+			else
+				fnc_def(head, atoi(opcode_tokens[1]));
 		}
 		else
 			fnc_def(head, line_number);
@@ -48,8 +51,5 @@ void parse_tokens(char **opcode_tokens, int line_number, stack_t **head,
 		exit(EXIT_FAILURE);
 	}
 	if (opcode_tokens)
-	{
 		free(opcode_tokens);
-	}
-
 }
