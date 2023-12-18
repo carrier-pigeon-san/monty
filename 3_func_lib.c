@@ -71,7 +71,7 @@ void sub(stack_t **stack, unsigned int line_number)
  * @stack: double pointer to the top of the stack
  * @line_number: line number of code in file
  */
-void div(stack_t **stack, unsigned int line_number)
+void divide(stack_t **stack, unsigned int line_number)
 {
 	if (*stack == NULL || (*stack)->next == NULL)
 	{
