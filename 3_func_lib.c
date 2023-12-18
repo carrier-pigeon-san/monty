@@ -67,7 +67,7 @@ void sub(stack_t **stack, unsigned int line_number)
 	(*stack)->prev = NULL;
 }
 /**
- * div - divide the second top element of the stack by the top element
+ * divide - divide the second top element of the stack by the top element
  * @stack: double pointer to the top of the stack
  * @line_number: line number of code in file
  */
