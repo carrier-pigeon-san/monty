@@ -36,3 +36,18 @@ void mod(stack_t **stack, unsigned int line_number)
 	(*stack)->n = (*stack)->n % (*stack)->prev->n;
 	(*stack)->prev = NULL;
 }
+/**
+ * free_stack - deallocated stack memory
+ * @stack: pointer to top of stack
+ */
+void free_stack(stack_t *stack)
+{
+	stack_t *temp = stack;
+
+	while (temp != NULL)
+	{
+		stack = stack->next;
+		free(temp);
+		temp = stack;
+	}
+}

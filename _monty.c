@@ -10,7 +10,7 @@ int main(int ac, char **av)
 {
 	FILE *bytefile;
 	char *lineptr = NULL;
-	size_t size = 0, line_count = 0;
+	size_t size = 0, count = 0;
 	ssize_t line_len;
 	char **tokens_array;
 	stack_t *head = NULL;
@@ -28,15 +28,17 @@ int main(int ac, char **av)
 	}
 	while ((line_len = getline(&lineptr, &size, bytefile)) != -1)
 	{
-		line_count++;
+		count++;
 		if (line_len > 1)
 		{
 			tokens_array = get_toks(lineptr, " $\n");
 			if (*tokens_array)
-				parse_tokens(tokens_array, line_count, &head);
+				parse_tokens(tokens_array, count, &head);
 		}
-		/*printf("%ld\n", line_len);*/
 	}
+	free(lineptr);
 	fclose(bytefile);
+	free_stack(head);
+
 	return (0);
 }

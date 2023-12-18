@@ -36,4 +36,9 @@ void parse_tokens(char **opcode_tokens, int line_number, stack_t **head)
 		/*printf("route 2\n");*/
 		p_err(line_number, opcode_tokens[0]);
 	}
+	if (opcode_tokens)
+	{
+		free(opcode_tokens);
+	}
+
 }

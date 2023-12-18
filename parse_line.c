@@ -12,7 +12,7 @@ char **get_toks(char *file_line, char *delimiters)
 	size_t n = 0, len = 1;
 	char *line_token;
 	char **line_tokens_arr;
-	char *dup_line = strdup(file_line);
+	/*char *dup_line = strdup(file_line);*/
 
 	line_tokens_arr = malloc(sizeof(char *));
 	if (line_tokens_arr == NULL)
@@ -20,8 +20,8 @@ char **get_toks(char *file_line, char *delimiters)
 		dprintf(2, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
-	/*rm_newline(file_line);*/
-	line_token = strtok(dup_line, delimiters);
+
+	line_token = strtok(file_line, delimiters);
 
 	while (line_token != NULL)
 	{
@@ -33,11 +33,6 @@ char **get_toks(char *file_line, char *delimiters)
 		n++;
 	}
 	line_tokens_arr[n] = NULL;
-
-	/*
-	*for (n = 0; line_tokens_arr[n] != NULL; n++)
-	*	printf("%s\n", line_tokens_arr[n]);
-	*/
 
 	return (line_tokens_arr);
 }

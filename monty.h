@@ -53,6 +53,7 @@ void *extend(void *mem, size_t new_size, size_t old_size);
 int if_valid(char *str_tokens[]);
 void p_err(int line_num, char *code);
 void parse_tokens(char **opcode_tokens, int line_numberi, stack_t **head);
+void free_stack(stack_t *stack);
 stack_t *make_node(void);
 
 #endif /* #ifndef MONTY_H */
