@@ -24,9 +24,10 @@ void (*sect_func(char *opcode))(stack_t **stack, unsigned int line_number)
 	int n;
 
 	/*printf("Opcode: %s", opcode);*/
+	if (opcode[0] == '#')
+		return (nop);
 	for (n = 0; protos[n].opcode != NULL; n++)
 	{
-
 		if (strcmp((protos[n].opcode), opcode) == 0)
 			return (protos[n].f);
 	}
