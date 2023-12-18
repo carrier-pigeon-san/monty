@@ -30,7 +30,7 @@ void parse_tokens(char **opcode_tokens, int line_number, stack_t **head,
 					free(opcode_tokens);
 				free(buffer);
 				fclose(stream);
-				_exit(EXIT_FAILURE);
+				exit(EXIT_FAILURE);
 			}
 			fnc_def(head, atoi(opcode_tokens[1]));
 		}
@@ -39,13 +39,13 @@ void parse_tokens(char **opcode_tokens, int line_number, stack_t **head,
 	}
 	else
 	{
+		dprintf(2, "L%d: unknown instruction %s\n", line_number, opcode_tokens[0]);
 		if (*head)
 			free_stack(*head);
-		if (opcode_tokens)
-			free(opcode_tokens);
+		free(opcode_tokens);
 		free(buffer);
 		fclose(stream);
-		p_err(line_number, opcode_tokens[0]);
+		exit(EXIT_FAILURE);
 	}
 	if (opcode_tokens)
 	{

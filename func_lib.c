@@ -3,11 +3,13 @@
 /**
  * p_err - prints error message
  * @line_num: line number in file
- * @code: invalid opcode
+ * @code: opcode tokens
  */
 
-void p_err(int line_num, char *code)
+void p_err(int line_num, char **code)
 {
-	dprintf(2, "L%d: unknown instruction %s\n", line_num, code);
+	dprintf(2, "L%d: unknown instruction %s\n", line_num, code[0]);
+	if (code)
+		free(code);
 	_exit(EXIT_FAILURE);
 }

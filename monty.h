@@ -52,7 +52,7 @@ char **get_toks(char *file_line, char *delimiters);
 void (*sect_func(char *opcode))(stack_t **stack, unsigned int line_number);
 void *extend(void *mem, size_t new_size, size_t old_size);
 int if_valid(char *str_tokens[]);
-void p_err(int line_num, char *code);
+void p_err(int line_num, char **code);
 void parse_tokens(char **opcode_tokens, int line_numberi, stack_t **head, char *buffer, FILE *stream);
 void free_stack(stack_t *stack);
 stack_t *make_node(void);
