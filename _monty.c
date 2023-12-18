@@ -33,12 +33,14 @@ int main(int ac, char **av)
 		{
 			tokens_array = get_toks(lineptr, " $\n");
 			if (*tokens_array)
-				parse_tokens(tokens_array, count, &head);
+				parse_tokens(tokens_array, count, &head, lineptr, bytefile);
 		}
+
 	}
 	free(lineptr);
-	fclose(bytefile);
 	free_stack(head);
+	fclose(bytefile);
+	/*free_stack(head);*/
 
 	return (0);
 }
