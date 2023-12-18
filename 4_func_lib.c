@@ -6,14 +6,18 @@
  */
 void mul(stack_t **stack, unsigned int line_number)
 {
+	stack_t *temp;
+
 	if (*stack == NULL || (*stack)->next == NULL)
 	{
 		dprintf(2, "L%d: can't mul, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
+	temp = *stack;
 	*stack = (*stack)->next;
 	(*stack)->n = (*stack)->n * (*stack)->prev->n;
 	(*stack)->prev = NULL;
+	free(temp);
 }
 /**
  * mod - computes mod of division of second top element by the top element
@@ -22,6 +26,8 @@ void mul(stack_t **stack, unsigned int line_number)
  */
 void mod(stack_t **stack, unsigned int line_number)
 {
+	stack_t *temp;
+
 	if (*stack == NULL || (*stack)->next == NULL)
 	{
 		dprintf(2, "L%d: can't mod, stack too short\n", line_number);
@@ -32,9 +38,11 @@ void mod(stack_t **stack, unsigned int line_number)
 		dprintf(2, "L%d: division by zero\n", line_number);
 		exit(EXIT_FAILURE);
 	}
+	temp = *stack;
 	*stack = (*stack)->next;
 	(*stack)->n = (*stack)->n % (*stack)->prev->n;
 	(*stack)->prev = NULL;
+	free(temp);
 }
 /**
  * free_stack - deallocated stack memory

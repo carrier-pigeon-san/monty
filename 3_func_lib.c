@@ -31,14 +31,18 @@ void swap(stack_t **stack, unsigned int line_number)
  */
 void add(stack_t **stack, unsigned int line_number)
 {
+	stack_t *temp;
+
 	if (*stack == NULL || (*stack)->next == NULL)
 	{
 		dprintf(2, "L%d: can't add, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
+	temp = *stack;
 	*stack = (*stack)->next;
 	(*stack)->n = (*stack)->n + (*stack)->prev->n;
 	(*stack)->prev = NULL;
+	free(temp);
 }
 /**
  * nop - does nothing
@@ -57,14 +61,18 @@ void nop(stack_t **stack, unsigned int line_number)
  */
 void sub(stack_t **stack, unsigned int line_number)
 {
+	stack_t *temp;
+
 	if (*stack == NULL || (*stack)->next == NULL)
 	{
 		dprintf(2, "L%d: can't sub, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
+	temp = *stack;
 	*stack = (*stack)->next;
 	(*stack)->n = (*stack)->n - (*stack)->prev->n;
 	(*stack)->prev = NULL;
+	free(temp);
 }
 /**
  * divide - divide the second top element of the stack by the top element
@@ -73,6 +81,8 @@ void sub(stack_t **stack, unsigned int line_number)
  */
 void divide(stack_t **stack, unsigned int line_number)
 {
+	stack_t *temp;
+
 	if (*stack == NULL || (*stack)->next == NULL)
 	{
 		dprintf(2, "L%d: can't div, stack too short\n", line_number);
@@ -83,7 +93,9 @@ void divide(stack_t **stack, unsigned int line_number)
 		dprintf(2, "L%d: division by zero\n", line_number);
 		exit(EXIT_FAILURE);
 	}
+	temp = *stack;
 	*stack = (*stack)->next;
 	(*stack)->n = (*stack)->n / (*stack)->prev->n;
 	(*stack)->prev = NULL;
+	free(temp);
 }
